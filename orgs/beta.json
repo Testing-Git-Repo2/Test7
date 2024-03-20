@@ -1,0 +1,21 @@
+{
+  "orgName": "RIA Accelerator - Beta Test Org",
+  "template": "0TTB0000001FQEG",
+  "settings": {
+    "lightningExperienceSettings": {
+      "enableS1DesktopEnabled": true
+    },
+    "chatterSettings": {
+      "enableChatter": true
+    },
+    "userManagementSettings": {
+      "enableNewProfileUI": true
+    },
+    "securitySettings": {
+      "enableAdminLoginAsAnyUser": true,
+      "sessionSettings": {
+        "forceRelogin": false
+      }
+    }
+  }
+}

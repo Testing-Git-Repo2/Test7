@@ -1,0 +1,76 @@
+minimum_cumulusci_version: "3.73.0"
+project:
+  name: RIA Accelerator
+  package:
+    name: RIA Accelerator
+    api_version: "57.0"
+  git:
+    default_branch: "main"
+  source_format: sfdx
+
+tasks:
+  install_managed:
+    options:
+      security_type: NONE
+
+  update_dependencies:
+    options:
+      security_type: NONE
+
+flows:
+  deploy_qbrix:
+    steps:
+      1:
+        flow: dependencies
+      2:
+        flow: deploy_qbrix_min
+      3:
+        flow: post_qbrix_deploy
+
+  deploy_qbrix_min:
+    steps:
+    # CUSTOMIZATION GOES HERE
+      1:
+        task: deploy
+        options:
+          path: force-app
+
+  dependencies:
+    steps:
+      1:
+        flow: prepare_org
+      2:
+        flow: source_dependencies
+
+  source_dependencies:
+    steps:
+      1:
+        flow: None
+
+  post_qbrix_deploy:
+    steps:
+      1:
+        flow: None
+
+  prepare_org:
+    steps:
+      3:
+        task: update_dependencies
+
+  dev_org:
+    steps:
+      1:
+        flow: None
+      2:
+        flow: deploy_qbrix
+      3:
+        flow: None
+
+plans:
+  install:
+    slug: install
+    tier: primary
+    title: Install Solution
+    steps:
+      1:
+        flow: deploy_qbrix
